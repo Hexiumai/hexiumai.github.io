@@ -177,7 +177,7 @@ We will cover this part as we go indeapth in this document. Learning math is mor
 
 
  
- #### iii. Probability
+ ####  iii. Probability
  
   The detailed document can be found inside the documentation folder and is saved as probability.pdf.
 

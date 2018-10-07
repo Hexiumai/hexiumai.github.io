@@ -153,6 +153,34 @@ We will cover this part as we go indeapth in this document. Learning math is mor
 
 ### b. Algorithms and implementation in python 
 
+ Before going deeper into the algorithms, we must know the notations we are going to be using in this section.
+ 
+ superscript (i) will denote the i<sup>th</sup> training example while superscript [l] will
+denote the l<sup>th</sup> layer.
+
+m : number of examples in the dataset
+
+n<sub>x</sub> : input size
+
+n<sub>y</sub> : output size (or number of classes)
+
+n<sub>h</sub><sup>[l]</sup> : number of hidden units of the l<sup>th</sup> layer
+
+L : Number of layers in the network
+
+X ∈ ℝ<sup>n<sub>x</sub>*m</sup> is the input matrix 
+
+x<sup>(i)</sup> ∈ ℝ<sup>n<sub>x</sub></sup> is the i<sub>th</sup> example represented as a column vector.
+
+Y ∈ ℝ<sup>n<sub>y</sub>*m</sup> is the input matrix 
+
+y<sup>(i)</sup> ∈ ℝ<sup>n<sub>y</sub></sup> is the i<sub>th</sup> example represented as a column vector.
+
+W<sup>[l]</sup> ∈ ℝ<sup>number of  units in next layer x number of units in the previous layer<sup> is the weight matrix, superscript [l] indicates the layer.
+
+b<sup>[l]</sup> ∈ ℝ<sup>number of  units in next layerr<sup> is the the bias vector of l<sup>th</sup> layer.
+ 
+ $\hat{y}$   
 
    - Linear regression and applications
    - Logistic regression and applications
@@ -171,21 +199,108 @@ We will cover this part as we go indeapth in this document. Learning math is mor
  
 ### a. Data,Importance of Data, Data collection, Structuring Data
 
+>  Data collection.
+
+Data collection is the process of gathering and measuring information on targeted variables in an established systematic fashion, which then enables one to answer relevant questions and evaluate outcomes.
+
 ### b. Intro to Hardware for machine learning and implementing 
 
 #### i. Jetson
+Nvidia Jetson stands for a series of computation processor boards from Nvidia. The Jetson TK1, TX1 and TX2 
+models all carry a Tegra processor (or SoC) from Nvidia that integrates an ARM architecture central processing unit (CPU).The Jetson TX1 Developer Kit is a full-featured development platform for visual computing designed to get you up and running fast.It comes pre-flashed with a Linux environment, includes support for many common APIs, and is supported by NVIDIA's complete development tool chain. A "CUDA Core" is nVidia's equivalent to AMD's "Stream Processors." NVidia's proprietary parallel computing programming model,CUDA (Compute Unified Device Architecture), is a specialized programming language that can leverage the GPU in specific ways to perform tasks with greater performance.
+The performance modes of the Nvidia Jetson TX2 are:
+
 #### ii. Movidius
+Movidius is a Neural Compute Stick (NCS) and it is produced by  Intel. It works without the use of internet,This software development kit enables rapid prototyping, validation, and deployment of deep neural networks. Profiling, tuning, and compiling a DNN on a development computers are done with the tools provided in the Intel Movidius Neural Compute SDK.Running Deep Learning models efficiently on low capacity graph processors is very painful. Movidius allows us to optimize the operation of large models such as GoogLeNet (thanks to Yann LeCun) with multi-use support. It is an easy-to-use kit that allows you to design and implement applications such as classification and object recognition as physical products.We can simply think of Movidius NCS as a GPU running on USB (Graphics Processing Unit). However, training of the model is not performed on this unit, the trained model works optimally on the unit and is intended to be used in physical environments for testing purposes.
+
 #### iii. NVIDIA Graphic cards
+
+Nvidia designs graphics processing units (GPUs) for the gaming and professional markets, as well as system on a chip units (SoCs) for the mobile computing and automotive market.A graphics card is a discrete hardware module in a  PC that consists of a daughterboard with one or more GPUs.NVIDIA TITAN Xp is the world's most powerful graphics card. Incredible computing horsepower and groundbreaking NVIDIA Pascal™ architecture give you the power to accomplish things you never thought possible.
+
 #### iV. Setting up deep learning pc
+-   Select Components: One should be very cautious while selecting the Hardware components. The selected components should be compatible with each other. GPU is the most important component, make sure you spend your money on a good graphics card. Do some additional research on this. Also you have to think about the future upgrades so make sure that you selected a suitable motherboard with more than one slots for the GPU and RAM. And select a suitable processor, power supply and a suitable case.Other necessary things like HDD etc. has to buy according to your need You should buy components from a trusted seller for a better experiance. Assemble the components and install the operating system, insall the drivers for the well functioning of the machine.  
+
+-   Setup Deep Learning Environment:  
+-  
+-  
+-  
+-  
+
 #### v. More hardware options
 #### vi. Tensor processing unit
-#### vii. Cloud computting
+Tensor Processing Units (TPUs) are Google’s custom-developed application-specific integrated circuits (ASICs) used to accelerate machine learning workloads. TPUs are designed from the ground up with the benefit of Google’s deep experience and leadership in machine learning.
 
-### c. Neural network training using python 
+Cloud TPU enables you to run your machine learning workloads on Google’s second-generation TPU accelerator hardware using TensorFlow. Cloud TPU is designed for maximum performance and flexibility to help researchers, developers, and businesses to build TensorFlow compute clusters that can leverage CPUs, GPUs, and TPUs. High-level Tensorflow APIs help you to get models running on the Cloud TPU hardware.
+
+Advantages of TPUs:
+Cloud TPU resources accelerate the performance of linear algebra computation, which is used heavily in machine learning applications. TPUs minimize the time-to-accuracy when you train large, complex neural network models. Models that previously took weeks to train on other hardware platforms can converge in hours on TPUs.
+#### vii. Cloud computing
+Cloud computing is the delivery of computing services—servers, storage, databases, networking, software, analytics and more—over the Internet (“the cloud”).
+Uses of cloud computing:
+You are probably using cloud computing right now, even if you don’t realise it. If you use an online service to send email, edit documents, watch movies or TV, listen to music, play games or store pictures and other files, it is likely that cloud computing is making it all possible behind the scenes.
+
+>   Create new apps and services
+>   Store, back up and recover data
+>   Host websites and blogs
+>   Stream audio and video
+>   Deliver software on demand
+>   Analyse data for patterns and make predictions
+
+Top benefits of cloud computing:
+>   Cost
+>   Speed
+>   Productivity
+>   Performance
+>   Reliability
+
+
+### c. Neural network training 
+Once a network has been structured for a particular application, that network is ready to be trained. To start this process the initial weights are chosen randomly. Then, the training, or learning, begins.
+
+There are two approaches to training - supervised and unsupervised. Supervised training involves a mechanism of providing the network with the desired output either by manually "grading" the network's performance or by providing the desired outputs with the inputs. Unsupervised training is where the network has to make sense of the inputs without outside help.
+
+The vast bulk of networks utilize supervised training. Unsupervised training is used to perform some initial characterization on inputs. However, in the full blown sense of being truly self learning, it is still just a shining promise that is not fully understood, does not completely work, and thus is relegated to the lab. 
+
 #### i. Platforms
+
+>  Apache Singa:
+Apache Singa is a general distributed deep learning platform for training big deep learning models over large datasets. It is designed with an intuitive programming model based on the layer abstraction. A variety of popular deep learning models are supported, namely feed-forward models including convolutional neural networks (CNN), energy models like restricted Boltzmann machine (RBM), and recurrent neural networks (RNN).
+
+>  Azure ML Studio:
+Azure ML Studio allows Microsoft Azure users to create and train models, then turn them into APIs that can be consumed by other services. Users get up to 10GB of storage per account for model data, although you can also connect your own Azure storage to the service for larger models. A wide range of algorithms are available, courtesy of both Microsoft and third parties.
+
+>  Caffe
+Caffe is a deep learning framework made with expression, speed, and modularity in mind. It is developed by the Berkeley Vision and Learning Center (BVLC) and by community contributors. Yangqing Jia created the project during his PhD at UC Berkeley. Caffe is released under the BSD 2-Clause license.  Models and optimization are defined by configuration without hard-coding & user can switch between CPU and GPU. Speed makes Caffe perfect for research experiments and industry deployment. Caffe can process over 60M images per day with a single NVIDIA K40 GPU.
+
+>  TensorFlow 
+TensorFlow is an open source software library for numerical computation using data flow graphs. TensorFlow implements what are called data flow graphs, where batches of data (“tensors”) can be processed by a series of algorithms described by a graph. The movements of the data through the system are called “flows” — hence, the name. Graphs can be assembled with C++ or Python and can be processed on CPUs or GPUs.
+
+>  Theano
+Theano is a Python library that lets you to define, optimize, and evaluate mathematical expressions, especially ones with multi-dimensional arrays (numpy.ndarray). Using Theano it is possible to attain speeds rivaling hand-crafted C implementations for problems involving large amounts of data. It was written at the LISA lab to support rapid development of efficient machine learning algorithms. Theano is named after the Greek mathematician, who may have been Pythagoras’ wife. Theano is released under a BSD license.
+
+>  Keras
+Keras is an open source neural network library written in Python. It is capable of running on top of TensorFlow, Microsoft Cognitive Toolkit or Theano. Designed to enable fast experimentation with deep neural networks, it focuses on being user-friendly, modular, and extensible.
+
 #### ii. Transfer learning
+Transfer learning is a machine learning method where a model developed for a task is reused as the starting point for a model on a second task.It is a popular approach in deep learning where pre-trained models are used as the starting point on computer vision and natural language processing tasks given the vast compute and time resources required to develop neural network models on these problems and from the huge jumps in skill that they provide on related problems.Transfer learning is an optimization, a shortcut to saving time or getting better performance.
 
 ### d. Improving models
+Enhancing a model performance can be challenging at times.Methods to Boost the Accuracy of a Model are:
+
+>  Add more data:
+
+>  Treat missing and Outlier values:
+ The unwanted presence of missing and outlier values in the training data often reduces the accuracy of a model or leads to a biased model. It leads to inaccurate predictions. This is because we don’t analyse the behavior and relationship with other variables correctly.
+
+>  Feature Engineering:
+ This step helps to extract more information from existing data. New information is extracted in terms of new features. These features may have a higher ability to explain the variance in the training data.
+
+>  Feature Selection:
+ Feature Selection is a process of finding out the best subset of attributes which better explains the relationship of independent variables with target variable.
+
+>  Algorithm Tuning:
+
+
 ### e. Common problems found during training of neural networks and it’s solutions
 ### f. Case studies(different CNN models)
 
